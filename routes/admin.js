@@ -9,6 +9,7 @@ require('../models/leaders')
 require('../models/favorite')
 require('../models/dishes')
 require('../models/comments')
+require('../models/urls')
 
 AdminBro.registerAdapter(AdminBroMongoose)
 

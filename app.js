@@ -17,6 +17,7 @@ var leaderRouter = require('./routes/leaderRouter');
 const uploadRouter = require('./routes/uploadRouter');
 const favoriteRouter = require('./routes/favoriteRouter');
 var commentRouter = require('./routes/commentRouter');
+var urlRouter = require('./routes/urlRouter');
 var app = express();
 
 app.all('*', (req, res, next) => {
@@ -51,7 +52,7 @@ app.use(passport.initialize());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/admin', adminRouter)
+app.use('/admin', adminRouter);
 
 
 
@@ -64,6 +65,7 @@ app.use('/leaders',leaderRouter);
 app.use('/imageUpload',uploadRouter);
 app.use('/favorites',favoriteRouter);
 app.use('/comments',commentRouter);
+app.use('/urls',urlRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
