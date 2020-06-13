@@ -85,17 +85,16 @@ favoriteRouter.route('/')
 
 favoriteRouter.route('/:dishId')
 .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-    .get(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
-        Favorites.findById(dishes._id)
-            .populate('user')
-            .populate('dishes')
-            .then((favorite) => {
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                res.json(favorite[0]);
-            }, (err) => next(err))
-            .catch((err) => next(err));
-    })
+.get(cors.cors, (req,res,next) => {
+    Dishes.findById(req.params.dishId)
+    .populate('comments.author')
+    .then((dish) => {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(dish);
+    }, (err) => next(err))
+    .catch((err) => next(err));
+})
     .post(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
 
         Favorites.find({ user: req.user._id })
