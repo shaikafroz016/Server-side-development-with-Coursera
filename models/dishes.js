@@ -4,6 +4,13 @@ require('mongoose-currency').loadType(mongoose);
 const Currency = mongoose.Types.Currency;
 
 
+var urlSchema = new Schema({
+    url:  {
+        type: String,
+        required: true
+    }
+});
+
 var dishSchema = new Schema({
     name: {
         type: String,
@@ -17,10 +24,6 @@ var dishSchema = new Schema({
     image: {
         type: String,
         required: true
-    },
-    url:{
-        type:String,
-        required:true
     },
     category: {
         type: String,
@@ -39,6 +42,7 @@ var dishSchema = new Schema({
         type:Boolean,
         default:false
     },
+    urls:[urlSchema]
 }, {
     timestamps: true
 });

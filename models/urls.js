@@ -1,19 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
 var urlSchema = new Schema({
-    url: {
+    url:  {
         type: String,
-    },
-    description:{
-        type:String
+        required: true
     },
     dish: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Dish'
     }
-})
+}, );
 
-var urls = mongoose.model('url', urlSchema);
-module.exports = urls;
+var Urls = mongoose.model('Url', urlSchema);
+
+module.exports = Urls;
