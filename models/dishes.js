@@ -42,7 +42,7 @@ var dishSchema = new Schema({
         type:Boolean,
         default:false
     },
-    urls:[urlSchema]
+    links:[urlSchema]
 }, {
     timestamps: true
 });
